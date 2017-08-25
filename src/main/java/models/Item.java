@@ -9,7 +9,7 @@ public class Item {
    public String description;
    public boolean barter = false;
 
-   public String type;
+//   public String type;
 
     public Item (int userId, String name, String location, boolean pub, String description, boolean barter){
         this.userId = userId;
@@ -89,8 +89,7 @@ public class Item {
         if (barter != item.barter) return false;
         if (!name.equals(item.name)) return false;
         if (!location.equals(item.location)) return false;
-        if (!description.equals(item.description)) return false;
-        return type.equals(item.type);
+        return description.equals(item.description);
     }
 
     @Override
@@ -102,7 +101,6 @@ public class Item {
         result = 31 * result + (pub ? 1 : 0);
         result = 31 * result + description.hashCode();
         result = 31 * result + (barter ? 1 : 0);
-        result = 31 * result + type.hashCode();
         return result;
     }
 }
