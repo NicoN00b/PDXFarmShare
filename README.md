@@ -1,6 +1,6 @@
 # PDX Farm Share
 
-#### PDX Farm is Application designed to open up the potential of the gift and barter economy in relation to our wild and cultivated abundance in the Portland Metro {8.25.17}_
+#### PDX Farm is Application designed to open up the potential of the gift and barter economy in relation to our wild and cultivated abundance in the Portland Metro - 8.25.17
 
 #### By Nicholas Raethke
 
