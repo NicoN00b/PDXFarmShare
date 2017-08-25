@@ -34,7 +34,7 @@ please share your suggestions with me NicoN00b @ nicholas.raethke@gmail.com
 
 ## Technologies Used
 
-This project is written in Java using IntelliJ IDE.  There are also so many dependencies I must thank.  Gradle, Maven, Spark, you know I couldn't do this without you.  POSTMAN, in a world with no front-end, you are the last Kevin Costner let to save us.
+This project is written in Java using IntelliJ IDE.  There are also so many dependencies I must thank.  Gradle, Maven, Spark, you know I couldn't do this without you.  POSTMAN, in a world with no front-end, you are the last Kevin Costner left to save us.
 Atom, I love writing my README.md files inside your borders.  Github and git bash, I would be nowhere without you.
 
 ### License
