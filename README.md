@@ -26,7 +26,7 @@ This project is not out of the gradle yet (punny? yes!), it needs more routing a
 
 ![Get All Items](/src/main/resources/public/images/GETItems.JPG "Getting them all")
 
-![Get Item by Id](/src/main/resources/public/images/GETItemNUM.JPG "By the Numbers")
+![Get Item by Id](/src/main/resources/public/images/GETItemNum.JPG "By the Numbers")
 
 ## Support and contact details
 
