@@ -4,12 +4,13 @@ public class User {
     private String userName;
     private String userAddress;
     private Integer userZip;
-    private Integer userPhone;
+    private String userPhone;
     private String userEmail;
     private String userBio;
     private String userPass;
+    private int id;
 
-    User (String userName, String userAddress, Integer userZip, Integer userPhone, String userEmail, String userBio, String userPass) {
+    public User (String userName, String userAddress, Integer userZip, String userPhone, String userEmail, String userBio, String userPass) {
         this.userName = userName;
         this.userAddress = userAddress;
         this.userZip = userZip;
@@ -43,11 +44,11 @@ public class User {
         this.userZip = userZip;
     }
 
-    public Integer getUserPhone() {
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(Integer userPhone) {
+    public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
 
@@ -73,5 +74,43 @@ public class User {
 
     public void setUserPass(String userPass) {
         this.userPass = userPass;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != user.id) return false;
+        if (!userName.equals(user.userName)) return false;
+        if (!userAddress.equals(user.userAddress)) return false;
+        if (!userZip.equals(user.userZip)) return false;
+        if (!userPhone.equals(user.userPhone)) return false;
+        if (!userEmail.equals(user.userEmail)) return false;
+        if (!userBio.equals(user.userBio)) return false;
+        return userPass.equals(user.userPass);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userName.hashCode();
+        result = 31 * result + userAddress.hashCode();
+        result = 31 * result + userZip.hashCode();
+        result = 31 * result + userPhone.hashCode();
+        result = 31 * result + userEmail.hashCode();
+        result = 31 * result + userBio.hashCode();
+        result = 31 * result + userPass.hashCode();
+        result = 31 * result + id;
+        return result;
     }
 }

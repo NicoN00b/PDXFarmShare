@@ -10,12 +10,12 @@ CREATE TABLE IF NOT EXISTS items (
   barter BOOLEAN,
 );
 
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
   id int PRIMARY KEY auto_increment,
   username VARCHAR,
   useraddress VARCHAR,
   userzip INTEGER,
-  userphone INTEGER,
+  userphone VARCHAR,
   useremail VARCHAR,
   userbio VARCHAR,
   userpass VARCHAR
