@@ -1,6 +1,6 @@
 package dao;
 
-import models.Item;
+import models.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -17,7 +17,7 @@ public class Sql2oItemDao implements ItemDao{
 
     @Override
     public void add(Item item) {
-        String sql = "INSERT INTO items (userId, name, location, pub, description, barter) VALUES (:userId, :name, :location, :pub, :description, :barter)";
+        String sql = "INSERT INTO items (userId, name, location, pub, description, barter, type) VALUES (:userId, :name, :location, :pub, :description, :barter, :type)";
         try(Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
                     .bind(item)
@@ -33,7 +33,40 @@ public class Sql2oItemDao implements ItemDao{
     public List<Item> getAll() {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM items")
+                    .throwOnMappingFailure(false)
                     .executeAndFetch(Item.class);
+        }
+    }
+
+    @Override
+    public List<Fruit> getAllFruit() {
+        String sql = "SELECT * FROM monsters WHERE type='fruit';";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Fruit.class);
+        }
+    }
+
+    @Override
+    public List<Veggie> getAllVeggie() {
+        String sql = "SELECT * FROM monsters WHERE type='veggie';";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Veggie.class);
+        }
+    }
+
+    @Override
+    public List<Herb> getAllHerb() {
+        String sql = "SELECT * FROM monsters WHERE type='herb';";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Herb.class);
+        }
+    }
+
+    @Override
+    public List<Other> getAllOther() {
+        String sql = "SELECT * FROM monsters WHERE type='other';";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Other.class);
         }
     }
 
@@ -42,6 +75,7 @@ public class Sql2oItemDao implements ItemDao{
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM items WHERE id = :id")
                     .addParameter("id", id)
+                    .throwOnMappingFailure(false)
                     .executeAndFetchFirst(Item.class);
         }
     }
@@ -58,6 +92,7 @@ public class Sql2oItemDao implements ItemDao{
                     .addParameter("description", newDescription)
                     .addParameter("barter", barter)
                     .addParameter("id", item.getId())
+                    .throwOnMappingFailure(false)
                     .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
@@ -66,16 +101,12 @@ public class Sql2oItemDao implements ItemDao{
 
     @Override
     public void deleteById(int id) {
-        String sql = "DELETE from items WHERE id = :id"; //raw sql
-//        String deleteJoin = "DELETE from items_foodtypes WHERE restaurantid = :restaurantId";
+        String sql = "DELETE from items WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
+                    .throwOnMappingFailure(false)
                     .executeUpdate();
-//            con.createQuery(deleteJoin)
-//                    .addParameter("restaurantId", id)
-//                    .executeUpdate();
-
         } catch (Sql2oException ex){
             System.out.println(ex);
         }

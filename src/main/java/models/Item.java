@@ -9,7 +9,7 @@ public class Item {
    public String description;
    public boolean barter = false;
 
-//   public String type;
+   public String type;
 
     public Item (int userId, String name, String location, boolean pub, String description, boolean barter){
         this.userId = userId;

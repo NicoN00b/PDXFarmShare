@@ -10,10 +10,10 @@ public interface ItemDao {
     void add (Item item);
     //read
     List<Item> getAll();
-//    List<Fruit> getAllFruitByItem(int itemId);
-//    List<Veggie> getAllVeggieByItem(int itemId);
-//    List<Herb> getAllHerbByItem(int itemId);
-//    List<Other> getAllOtherByItem(int itemId);
+    List<Fruit> getAllFruit();
+    List<Veggie> getAllVeggie();
+    List<Herb> getAllHerb();
+    List<Other> getAllOther();
 //
     Item findById(int id);
 //    //    //update

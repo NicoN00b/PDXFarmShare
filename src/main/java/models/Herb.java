@@ -4,12 +4,15 @@ public class Herb extends Item{
     private String variety;
     private String quantity;
     private boolean youPick = false;
+    public static final String DATABASE_TYPE = "herb";
 
     public Herb (int userId, String name, String location, boolean pub, String description, boolean barter, String variety, String quantity, boolean youPick) {
         super(userId, name, location, pub, description, barter);
         this.variety = variety;
         this.quantity = quantity;
         this.youPick = youPick;
+
+        type = DATABASE_TYPE;
 
     }
 

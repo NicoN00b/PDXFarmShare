@@ -72,6 +72,7 @@ public class Sql2oUserDao implements UserDao {
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
+                    .throwOnMappingFailure(false)
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);

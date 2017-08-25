@@ -8,6 +8,10 @@ CREATE TABLE IF NOT EXISTS items (
   pub BOOLEAN,
   description VARCHAR,
   barter BOOLEAN,
+  type VARCHAR,
+  variety VARCHAR,
+  quantity VARCHAR,
+  youpick BOOLEAN
 );
 
 CREATE TABLE IF NOT EXISTS users (
