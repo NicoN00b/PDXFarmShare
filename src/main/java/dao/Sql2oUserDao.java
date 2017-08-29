@@ -50,13 +50,13 @@ public class Sql2oUserDao implements UserDao {
         ArrayList<Item> items = new ArrayList<>();
 
         String joinQuery = "SELECT itemid FROM users_items WHERE userid = :userId";
+        String itemQuery = "SELECT * FROM items WHERE id = :itemId";
 
         try (Connection con = sql2o.open()) {
             List<Integer> allItemsIds = con.createQuery(joinQuery)
                     .addParameter("userId", userId)
                     .executeAndFetch(Integer.class);
             for (Integer itemId : allItemsIds){
-                String itemQuery = "SELECT * FROM items WHERE id = :itemId";
                 items.add(
                         con.createQuery(itemQuery)
                                 .addParameter("itemId", itemId)

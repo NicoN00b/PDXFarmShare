@@ -1,6 +1,7 @@
 package dao;
 
 import models.Item;
+import models.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,12 +16,14 @@ public class Sql2oItemDaoTest {
 
     private Connection conn;
     private Sql2oItemDao itemDao;
+    private Sql2oUserDao userDao;
 
     @Before
     public void setUp() throws Exception {
         String connectionString ="jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         itemDao = new Sql2oItemDao(sql2o);
+        userDao = new Sql2oUserDao(sql2o);
         conn = sql2o.open();
     }
 
@@ -75,7 +78,11 @@ public class Sql2oItemDaoTest {
     }
 
 
+
     public Item setupItem(){
+        return new Item(123, "kale", "taylor st, montavilla", false, "I have Kale on the street for picking", false);
+    }
+    public Item setupAltItem(){
         return new Item(123, "kale", "taylor st, montavilla", false, "I have Kale on the street for picking", false);
     }
 

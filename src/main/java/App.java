@@ -8,6 +8,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import spark.Spark;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,7 @@ public class App {
         });
 
         post("users/:userid/items/new", "application/json", (req, res) -> {
+            //addItemToUserProfile
             int userid = Integer.parseInt(req.params("userId"));
             Item item = gson.fromJson(req.body(), Item.class);
             item.setUserId(userid);
@@ -70,9 +72,18 @@ public class App {
             return gson.toJson(userDao.getAll());
         });
 
+        get("/users/:userid/items", "application/json", (req, res) -> {
+            res.type("application/json");
+            int userId = Integer.parseInt(req.params("userid"));
+            List<Item> allItems = userDao.getAllItemsForAUser(1);
+            System.out.println(allItems.size());
+            res.type("application/json");
+            return gson.toJson(allItems);
+        });
+
         get("/users/:userid/items/:id", "application/json", (req, res) -> {
             res.type("application/json");
-            int userid = Integer.parseInt(req.params("userId"));
+            int userId = Integer.parseInt(req.params("userId"));
             int itemId = Integer.parseInt(req.params("id"));
             res.type("application/json");
 //            I want to make this a valid exception message
