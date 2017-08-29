@@ -11,7 +11,7 @@ This is the beginning of a scalable project that connects users for the purpose 
 ![Database schema](/src/main/resources/public/images/PDXFarmSchema.JPG "Schema")
 
 
-This product intends to connect urban farmers, gleaners, food banks, foodies without ample resources, and anyone else interested in locally raised food.  It will implement mapping data to connect people to the most convenient resources and incorporate existing resources, such as fallingfruit.org into the data.
+This product intends to connect urban farmers, gleaners, food banks, foodies without ample resources, and anyone else interested in locally raised food.  It will implement mapping data to connect people to the most convenient resources and incorporate existing resources into the data, specifically fallingfruit.org, which has an open source map of fruit trees and other free food.
 
 ## Setup/Installation Requirements
 
@@ -20,13 +20,15 @@ At this point use will require an IDE and a program such as POSTMAN to see the D
 
 ## Known Bugs
 
-This project is not out of the gradle yet (punny? yes!), it needs more routing and testing of it's one to many inheritance, as well as, further development.  Here you can see are progress thanks to the snipping tool...
+This project is not out of the gradle yet (punny? yes!), it needs more routing and testing of it's one to many inheritance (Item as a super class over subclasses Fruit, Veggie, Herb, and Other), as well as, further development (I would still like to implement a single table inheritance, but documentation for it in Java is scant).  Here you can see the progress thanks to the snipping tool...
 
-![Post](/src/main/resources/public/images/PostItem.JPG "Posting with the POSTMAN")
+![Post](/src/main/resources/public/images/PostItemNestedInUser.JPG "Posting with the POSTMAN")
 
 ![Get All Items](/src/main/resources/public/images/GETItems.JPG "Getting them all")
 
-![Get Item by Id](/src/main/resources/public/images/GETItemNum.JPG "By the Numbers")
+![Get Item by Id](/src/main/resources/public/images/GETItemNestedInUser.JPG "By the Numbers")
+
+(please see further images in /public/images)
 
 ## Support and contact details
 
