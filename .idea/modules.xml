@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/farm-share.iml" filepath="$PROJECT_DIR$/.idea/modules/farm-share.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/farm-share_main.iml" filepath="$PROJECT_DIR$/.idea/modules/farm-share_main.iml" group="farm-share" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/farm-share_test.iml" filepath="$PROJECT_DIR$/.idea/modules/farm-share_test.iml" group="farm-share" />
+    </modules>
+  </component>
+</project>

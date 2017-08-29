@@ -4,7 +4,7 @@ public class Veggie extends Item {
     private String variety;
     private String quantity;
     private boolean youPick = false;
-    public static final String DATABASE_TYPE = "veggie";
+//    public static final String DATABASE_TYPE = "veggie";
 
     public Veggie (int userId, String name, String location, boolean pub, String description, boolean barter, String variety, String quantity, boolean youPick) {
         super(userId, name, location, pub, description, barter);
@@ -12,7 +12,7 @@ public class Veggie extends Item {
         this.quantity = quantity;
         this.youPick = youPick;
 
-        type = DATABASE_TYPE;
+//        type = DATABASE_TYPE;
     }
 
     public int getId() {
