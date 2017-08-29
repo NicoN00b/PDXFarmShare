@@ -22,7 +22,7 @@ At this point use will require an IDE and a program such as POSTMAN to see the D
 
 This project is not out of the gradle yet (punny? yes!), it needs more routing and testing of it's one to many inheritance (Item as a super class over subclasses Fruit, Veggie, Herb, and Other), as well as, further development (I would still like to implement a single table inheritance, but documentation for it in Java is scant).  Here you can see the progress thanks to the snipping tool...
 
-![Post](/src/main/resources/public/images/PostItemNestedInUser.JPG "Posting with the POSTMAN")
+![Post](/src/main/resources/public/images/POSTItemNestedInUser.JPG "Posting with the POSTMAN")
 
 ![Get All Items](/src/main/resources/public/images/GETItems.JPG "Getting them all")
 
