@@ -5,6 +5,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sql2oItemDao implements ItemDao{
@@ -27,6 +28,44 @@ public class Sql2oItemDao implements ItemDao{
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
+    }
+
+    @Override
+    public void addItemToUserProfile(Item item, User user){
+        String sql = "INSERT INTO users_items (userid, itemid, name) VALUES (:userId, :itemId, :name)";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("userId", user.getId())
+                    .addParameter("itemId", item.getId())
+                    .addParameter("name", item.getName())
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public List<User> getAllUsersByItemName(String name) {
+
+        ArrayList<User> users = new ArrayList<>();
+
+        String joinQuery = "SELECT userid FROM users_items WHERE itemid = :itemId";
+
+        try (Connection con = sql2o.open()) {
+            List<Integer> allUserIds = con.createQuery(joinQuery)
+                    .addParameter("name", name)
+                    .executeAndFetch(Integer.class); //what is happening in the lines above?
+            for (Integer userId : allUserIds){
+                String userQuery = "SELECT * FROM users WHERE id = :userId";
+                users.add(
+                        con.createQuery(userQuery)
+                                .addParameter("userId", userId)
+                                .executeAndFetchFirst(User.class));
+            }
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+        return users;
     }
 
     @Override
@@ -70,10 +109,14 @@ public class Sql2oItemDao implements ItemDao{
     @Override
     public void deleteById(int id) {
         String sql = "DELETE from items WHERE id = :id";
+        String deleteJoin= "DELETE from users_items WHERE userid = :userid";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
                     .throwOnMappingFailure(false)
+                    .executeUpdate();
+            con.createQuery(deleteJoin)
+                    .addParameter("userid", id)
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);

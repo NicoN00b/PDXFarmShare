@@ -8,8 +8,11 @@ public interface ItemDao {
 
     //create
     void add (Item item);
+
+    void addItemToUserProfile(Item item, User user);
     //read
     List<Item> getAll();
+    List<User> getAllUsersByItemName(String name);
 //    List<Fruit> getAllFruit();
 //    List<Veggie> getAllVeggie();
 //    List<Herb> getAllHerb();

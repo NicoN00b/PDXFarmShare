@@ -7,50 +7,50 @@ import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class Sql2oFruitDao implements FruitDao{
+public class Sql2oHerbDao implements HerbDao{
 
     private final Sql2o sql2o;
 
-    public Sql2oFruitDao(Sql2o sql2o) {
+    public Sql2oHerbDao(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
 
 
-    public void add(Fruit fruit) {
-        String sql = "INSERT INTO fruits (userId, name, location, pub, description, barter) VALUES (:userId, :name, :location, :pub, :description, :barter)";
+    public void add(Herb herb) {
+        String sql = "INSERT INTO herbs (userId, name, location, pub, description, barter) VALUES (:userId, :name, :location, :pub, :description, :barter)";
         try(Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
-                    .bind(fruit)
+                    .bind(herb)
                     .executeUpdate()
                     .getKey();
-            fruit.setId(id);
+            herb.setId(id);
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
     }
 
     @Override
-    public List<Fruit> getAll() {
+    public List<Herb> getAll() {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM fruits")
+            return con.createQuery("SELECT * FROM herbs")
                     .throwOnMappingFailure(false)
-                    .executeAndFetch(Fruit.class);
+                    .executeAndFetch(Herb.class);
         }
     }
 
     @Override
-    public Fruit findById(int id) {
+    public Herb findById(int id) {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM fruits WHERE id = :id")
+            return con.createQuery("SELECT * FROM herbs WHERE id = :id")
                     .addParameter("id", id)
                     .throwOnMappingFailure(false)
-                    .executeAndFetchFirst(Fruit.class);
+                    .executeAndFetchFirst(Herb.class);
         }
     }
 
     @Override
-    public void update(Fruit fruit, String newName, String newLocation, boolean pub, String newDescription, boolean barter){
-        String sql = "UPDATE fruits SET (name, location, pub, description, barter) = (:name, :location, :pub, :description, :barter) WHERE id=:id";
+    public void update(Herb herb, String newName, String newLocation, boolean pub, String newDescription, boolean barter){
+        String sql = "UPDATE herbs SET (name, location, pub, description, barter) = (:name, :location, :pub, :description, :barter) WHERE id=:id";
 
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
@@ -59,7 +59,7 @@ public class Sql2oFruitDao implements FruitDao{
                     .addParameter("pub", pub)
                     .addParameter("description", newDescription)
                     .addParameter("barter", barter)
-                    .addParameter("id", fruit.getId())
+                    .addParameter("id", herb.getId())
                     .throwOnMappingFailure(false)
                     .executeUpdate();
         } catch (Sql2oException ex) {
@@ -69,7 +69,7 @@ public class Sql2oFruitDao implements FruitDao{
 
     @Override
     public void deleteById(int id) {
-        String sql = "DELETE from fruits WHERE id = :id";
+        String sql = "DELETE from herbs WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)

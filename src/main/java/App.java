@@ -49,13 +49,14 @@ public class App {
             res.type("application/json");
             int itemId = Integer.parseInt(req.params("id"));
             res.type("application/json");
-
 //            I want to make this a valid exception message
 //            if (itemId == null){
 //                throw new ApiException(404, String.format("It appears this item is no longer available"));
 //            }
             return gson.toJson(itemDao.findById(itemId));
         });
+
+
 
         exception(ApiException.class, (exception, req, res) -> {
             ApiException err = (ApiException) exception;
@@ -69,7 +70,7 @@ public class App {
 
 
 //        Spark wouldn't recognize this filter
-//        after((res, req) -> {
+//        after((res, req) ->{
 //            res.type("application/json");
 //        });
     }

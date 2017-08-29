@@ -9,11 +9,12 @@ public interface UserDao {
 
     //create
     void add (User user);
+    void addItemToUserProfile(Item item, User user);
 
     //read
     List<User> getAll();
-//    List<Item> getAllItemsForAUser(int userId); //D - we will implement this soon.
-//
+    List<Item> getAllItemsForAUser(int userId);
+
     User findById(int id);
 //
 //    //update

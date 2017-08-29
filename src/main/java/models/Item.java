@@ -20,6 +20,14 @@ public class Item {
         this.barter = barter;
     }
 
+    public Item (String name, String location, boolean pub, String description){
+        this.name = name;
+        this.location = location;
+        this.pub = pub;
+        this.description = description;
+    }
+
+
     public int getId() {
         return id;
     }

@@ -13,7 +13,7 @@ public interface FruitDao {
 
     Fruit findById(int id);
     //    //    //update
-    void update(int userId, String newName, String newLocation, boolean pub, String newDescription, boolean barter, String variety, String quantity, boolean youPick);
+    void update(Fruit fruit, String newName, String newLocation, boolean pub, String newDescription, boolean barter);
     //    //    //delete
     void deleteById(int id);
 //
