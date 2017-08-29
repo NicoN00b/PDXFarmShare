@@ -1,0 +1,22 @@
+{
+  "item": {
+    "userId": "1",
+    "name": "blackberries",
+    "location": "Montavilla",
+    "pub": "true",
+    "description": "free blackberries in alley",
+    "barter": "false",
+  }
+}
+
+{
+  "user": {
+    "userName": "james007",
+    "userAddress": "214 NE Broadway",
+    "userZip": "97232",
+    "userPhone": "503-402-9874",
+    "userEmail": "james007@aol.com",
+    "userBio": "microfarmer and bond fan",
+    "userPass": "mi5007",
+  }
+}
