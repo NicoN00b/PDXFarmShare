@@ -1,0 +1,21 @@
+{
+   "userId": "1",
+   "name": "blackberries",
+   "location": "montavilla",
+   "pub": "true",
+   "description": "A long row of bushes in the alley right of way, 78th between Hawthorne and Madison.",
+   "barter": "false",
+}
+
+{
+    "userId": "1",
+    "name": "blackberries",
+    "location": "montavilla",
+    "pub": "true",
+    "description": "A long row of bushes in the alley right of way, 78th between Hawthorne and Madison.",
+    "barter": "false",
+    "type": "fruit",
+    "variety": "himalayan",
+    "quantity": "as much as you can pick",
+    "youPick": "true"
+ }
